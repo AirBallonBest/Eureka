@@ -1,0 +1,19 @@
+server:
+  port: 7776
+eureka:
+  client:
+    service-url:
+    #提供地址可以让消费者访问注册中心 服务在一个地址下 使用Docker就可以拆分成多个地址
+    #如果是多个集群 则需要列出其他的服务地址
+      defaulZone: http://localhost:7776/eureka/
+    #注册中心假如压力较大 可以使用分布式集群的设计 开启数据同步
+    fetch-registry: false
+    #不会为注册中心在申请一个注册中心
+    register-with-eureka: false
+#开启安全机制
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: 123456
